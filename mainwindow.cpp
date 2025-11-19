@@ -2615,7 +2615,7 @@ void MainWindow::readAllSkedObsModes()
         QTextStream in(&modesFile);
         while (!in.atEnd()){
             QString line = in.readLine();
-            if(line.isEmpty() || line[0] == "*" || line[0] == "!" || line[0] == "&"){
+            if(line.isEmpty() || line[0] == '*' || line[0] == '!' || line[0] == '&'){
                 continue;
             }
             QStringList split = line.split(" ",Qt::SkipEmptyParts);
@@ -3626,7 +3626,7 @@ void MainWindow::readStations()
         QTextStream in(&antennaFile);
         while (!in.atEnd()){
             QString line = in.readLine();
-            if(line.trimmed().isEmpty() || line[0] == "*" || line[0] == "!" || line[0] == "&"){
+            if(line.trimmed().isEmpty() || line[0] == '*' || line[0] == '!' || line[0] == '&'){
                 continue;
             }
             QStringList split = line.split(" ",Qt::SkipEmptyParts);
@@ -3641,7 +3641,7 @@ void MainWindow::readStations()
         QTextStream in(&equipFile);
         while (!in.atEnd()){
             QString line = in.readLine();
-            if(line.trimmed().isEmpty() || line[0] == "*" || line[0] == "!" || line[0] == "&"){
+            if(line.trimmed().isEmpty() || line[0] == '*' || line[0] == '!' || line[0] == '&'){
                 continue;
             }
             QStringList split = line.split(" ",Qt::SkipEmptyParts);
@@ -3657,7 +3657,7 @@ void MainWindow::readStations()
         QTextStream in(&positionFile);
         while (!in.atEnd()){
             QString line = in.readLine();
-            if(line.trimmed().isEmpty() || line[0] == "*" || line[0] == "!" || line[0] == "&"){
+            if(line.trimmed().isEmpty() || line[0] == '*' || line[0] == '!' || line[0] == '&'){
                 continue;
             }
             QStringList split = line.split(" ",Qt::SkipEmptyParts);
@@ -4529,7 +4529,7 @@ void MainWindow::readSources()
         QTextStream in(&sourceFile);
         while (!in.atEnd()){
             QString line = in.readLine();
-            if(line.trimmed().isEmpty() || line[0] == "*" || line[0] == "!" || line[0] == "&"){
+            if(line.trimmed().isEmpty() || line[0] == '*' || line[0] == '!' || line[0] == '&'){
                 continue;
             }
             QStringList split = line.split(" ",Qt::SkipEmptyParts);
@@ -4627,7 +4627,7 @@ void MainWindow::readSatellites()
         while (!in.atEnd()){
             QString line = in.readLine();
             line = line.simplified();
-            if(line.isEmpty() || line[0] == "*" || line[0] == "!" || line[0] == "&"){
+            if(line.isEmpty() || line[0] == '*' || line[0] == '!' || line[0] == '&'){
                 continue;
             }
             switch ( flag ) {
