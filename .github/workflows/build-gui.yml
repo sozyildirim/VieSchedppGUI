@@ -1,0 +1,99 @@
+name: Build VieSchedGUI macOS
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build-macos:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+          
+      - name: Install Official Qt6 (Universal)
+        uses: jurplel/install-qt-action@v4
+        with:
+          version: '6.8.1'
+          cache: true
+          host: 'mac'
+          target: 'desktop'
+        
+      - name: Debug Qt Path
+        run: |
+          echo "Qt dir: $Qt6_DIR"
+          which qmake
+          qmake -query
+
+      - name: Install Boost
+        run: brew install boost
+        
+#      - name: Install tools
+#        run: |
+#          brew install cmake git
+
+      - name: Configure project
+        run: |
+          mkdir build
+          cd build
+          cmake .. -DCMAKE_PREFIX_PATH=$Qt6_DIR
+
+      - name: Show repository structure
+        run: |
+          pwd
+          ls -R
+          
+      - name: Build project
+        run: |
+          cd build
+          make -j$(sysctl -n hw.ncpu)
+
+
+
+      - name: Bundle Boost libraries
+        run: |
+          APP=build/VieSchedpp.app
+          mkdir -p $APP/Contents/Frameworks
+
+          BOOST_LIB=$(brew --prefix boost)/lib
+
+          cp $BOOST_LIB/libboost*.dylib $APP/Contents/Frameworks/ || true
+
+#      - name: Fix rpath
+#        run: |
+#          BINARY=build/VieSchedpp.app/Contents/MacOS/VieSchedpp
+#          install_name_tool -add_rpath "@executable_path/../Frameworks" "$BINARY" || true
+#
+
+      - name: Deploy Qt libraries
+        run: |
+          cd build
+          #macdeployqt VieSchedpp.app -verbose=1
+          macdeployqt VieSchedpp.app -verbose=3 -dmg
+
+      - name: Code sign app
+        run: |
+          codesign --force --deep --sign - build/VieSchedpp.app
+
+      - name: Package app
+        run: |
+          cd build
+          zip -r VieSchedpp-macos.zip VieSchedpp.app
+
+    
+      - name: Upload compiled app
+        uses: actions/upload-artifact@v4
+        with:
+          name: VieSched-macos
+          path: build/VieSchedpp-macos.zip
+
+      - name: Check dependencies
+        run: |
+          ls -R build/VieSchedpp.app/Contents/Frameworks
+          otool -L build/VieSchedpp.app/Contents/MacOS/VieSchedpp
+          
+      - name: Smoke test
+        run: |
+          ./build/VieSchedpp.app/Contents/MacOS/VieSchedpp --version
