@@ -17,6 +17,7 @@ jobs:
         uses: jurplel/install-qt-action@v4
         with:
           version: '6.8.1'
+          modules: 'qtcharts'
           cache: true
           host: 'mac'
           target: 'desktop'
