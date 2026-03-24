@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.25)
 project(VieSchedppGUI LANGUAGES CXX C)
 
+find_package(Qt6 REQUIRED COMPONENTS Core Gui Widgets)
+
 # ------------------------------------------------
 # C++ standard
 # ------------------------------------------------
@@ -113,6 +115,14 @@ add_executable(${PROJECT_NAME}
     ${RESOURCES_RCC}
 )
 
+ target_link_libraries(VieSchedpp
+    PRIVATE
+    Qt6::Core
+    Qt6::Gui
+    Qt6::Widgets
+)
+
+
 # ------------------------------------------------
 # Include directories
 # ------------------------------------------------
@@ -169,7 +179,7 @@ if(LINK_BOOST)
     else()
         set(Boost_USE_STATIC_LIBS OFF)
     endif()
-    #find_package(Boost CONFIG REQUIRED COMPONENTS log log_setup system)
+    #find_package(Boost CONFIG REQUIRED COMPONENTS log log_setup)
     set(Boost_USE_STATIC_LIBS OFF)
     set(Boost_USE_MULTITHREADED ON)
     set(Boost_USE_STATIC_RUNTIME OFF)
@@ -193,7 +203,7 @@ endif ()
 # ------------------------------------------------------------------------------
 # SOFA
 # ------------------------------------------------------------------------------
-set(PATH_IAU_SOFA "../IAU_SOFA/Release/" CACHE PATH "Path to IAU SOFA library")
+set(PATH_IAU_SOFA "${PROJECT_SOURCE_DIR}/IAU_SOFA/Release/" CACHE PATH "Path to IAU SOFA library")
 find_library(SOFA_LIB
         NAMES sofa_c libsofa_c.a libsofa_c.lib
         HINTS ${PATH_IAU_SOFA}
@@ -210,7 +220,7 @@ endif()
 # ------------------------------------------------------------------------------
 # SGP4
 # ------------------------------------------------------------------------------
-set(PATH_SGP4 "../SGP4/Release/libsgp4/" CACHE PATH "Path to SGP4 library")
+set(PATH_SGP4 "${PROJECT_SOURCE_DIR}/SGP4/Release/libsgp4/" CACHE PATH "Path to SGP4 library")
 find_library(SGP4_LIB
         NAMES sgp4 libsgp4.a libsgp4.lib
         HINTS ${PATH_SGP4}
