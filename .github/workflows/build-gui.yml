@@ -79,7 +79,7 @@ jobs:
         run: |
           cd build
           #macdeployqt VieSchedpp.app -verbose=1
-          macdeployqt VieSchedppGUI -verbose=3 -dmg
+          macdeployqt VieSchedppGUI.app -verbose=3 -dmg
 
       - name: Code sign app
         run: |
