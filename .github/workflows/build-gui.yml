@@ -79,29 +79,29 @@ jobs:
         run: |
           cd build
           #macdeployqt VieSchedpp.app -verbose=1
-          macdeployqt VieSchedpp.app -verbose=3 -dmg
+          macdeployqt VieSchedppGUI -verbose=3 -dmg
 
       - name: Code sign app
         run: |
-          codesign --force --deep --sign - build/VieSchedpp.app
+          codesign --force --deep --sign - build/VieSchedppGUI.app
 
       - name: Package app
         run: |
           cd build
-          zip -r VieSchedpp-macos.zip VieSchedpp.app
+          zip -r VieSchedppGUI-macos.zip VieSchedppGUI.app
 
     
       - name: Upload compiled app
         uses: actions/upload-artifact@v4
         with:
           name: VieSched-macos
-          path: build/VieSchedpp-macos.zip
+          path: build/VieSchedppGUI-macos.zip
 
       - name: Check dependencies
         run: |
-          ls -R build/VieSchedpp.app/Contents/Frameworks
-          otool -L build/VieSchedpp.app/Contents/MacOS/VieSchedpp
+          ls -R build/VieSchedppGUI.app/Contents/Frameworks
+          otool -L build/VieSchedppGUI.app/Contents/MacOS/VieSchedpp
           
       - name: Smoke test
         run: |
-          ./build/VieSchedpp.app/Contents/MacOS/VieSchedpp --version
+          ./build/VieSchedppGUI.app/Contents/MacOS/VieSchedppGUI --version
