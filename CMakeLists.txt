@@ -210,7 +210,7 @@ endif()
 # ------------------------------------------------------------------------------
 # SGP4
 # ------------------------------------------------------------------------------
-set(PATH_SGP4 "../sgp4/Release/libsgp4/" CACHE PATH "Path to SGP4 library")
+set(PATH_SGP4 "../SGP4/Release/libsgp4/" CACHE PATH "Path to SGP4 library")
 find_library(SGP4_LIB
         NAMES sgp4 libsgp4.a libsgp4.lib
         HINTS ${PATH_SGP4}
