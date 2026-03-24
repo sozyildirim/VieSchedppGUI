@@ -115,7 +115,7 @@ add_executable(${PROJECT_NAME}
     ${RESOURCES_RCC}
 )
 
- target_link_libraries(VieSchedpp
+ target_link_libraries(${PROJECT_NAME}
     PRIVATE
     Qt6::Core
     Qt6::Gui
