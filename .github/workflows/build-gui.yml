@@ -74,7 +74,10 @@ jobs:
 #          BINARY=build/VieSchedppGUI.app/Contents/MacOS/VieSchedppGUI
 #          install_name_tool -add_rpath "@executable_path/../Frameworks" "$BINARY" || true
 #
-
+      - name: Debug app bundle
+        run: |
+          ls -R build
+    
       - name: Deploy Qt libraries
         run: |
           cd build
