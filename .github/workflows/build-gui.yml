@@ -28,6 +28,9 @@ jobs:
           which qmake
           qmake -query
 
+      - name: Install OpenMP
+        run: brew install libomp
+
       - name: Install Boost
         run: brew install boost
         
