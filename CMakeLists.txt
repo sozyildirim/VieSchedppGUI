@@ -109,7 +109,8 @@ qt_add_resources(RESOURCES_RCC ${QRC_FILES})
 # ------------------------------------------------
 # Add executable
 # ------------------------------------------------
-add_executable(${PROJECT_NAME}
+
+add_executable(${PROJECT_NAME} MACOSX_BUNDLE
     ${ALL_SOURCES}
     ${UI_FILES}
     ${RESOURCES_RCC}
