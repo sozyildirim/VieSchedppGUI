@@ -62,7 +62,7 @@ jobs:
 
       - name: Bundle Boost libraries
         run: |
-          APP=build/VieSchedpp.app
+          APP=build/VieSchedppGUI.app
           mkdir -p $APP/Contents/Frameworks
 
           BOOST_LIB=$(brew --prefix boost)/lib
@@ -71,7 +71,7 @@ jobs:
 
 #      - name: Fix rpath
 #        run: |
-#          BINARY=build/VieSchedpp.app/Contents/MacOS/VieSchedpp
+#          BINARY=build/VieSchedppGUI.app/Contents/MacOS/VieSchedppGUI
 #          install_name_tool -add_rpath "@executable_path/../Frameworks" "$BINARY" || true
 #
 
