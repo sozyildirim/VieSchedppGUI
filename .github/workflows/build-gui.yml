@@ -40,7 +40,7 @@ jobs:
 
       - name: Clone VieSchedpp core
         run: |
-          git clone https://github.com/<owner>/VieSchedpp.git ../VieSchedpp
+          git clone https://github.com/sozyildirim/VieSchedpp.git ../VieSchedpp
 
       - name: Configure project
         run: |
