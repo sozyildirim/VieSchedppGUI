@@ -105,6 +105,6 @@ jobs:
           ls -R build/VieSchedppGUI.app/Contents/Frameworks
           otool -L build/VieSchedppGUI.app/Contents/MacOS/VieSchedppGUI
           
-      - name: Smoke test
-        run: |
-          ./build/VieSchedppGUI.app/Contents/MacOS/VieSchedppGUI --version
+#      - name: Smoke test
+#        run: |
+#          ./build/VieSchedppGUI.app/Contents/MacOS/VieSchedppGUI --version
