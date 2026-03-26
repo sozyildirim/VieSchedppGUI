@@ -103,7 +103,7 @@ jobs:
       - name: Check dependencies
         run: |
           ls -R build/VieSchedppGUI.app/Contents/Frameworks
-          otool -L build/VieSchedppGUI.app/Contents/MacOS/VieSchedpp
+          otool -L build/VieSchedppGUI.app/Contents/MacOS/VieSchedppGUI
           
       - name: Smoke test
         run: |
