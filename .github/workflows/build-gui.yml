@@ -28,8 +28,8 @@ jobs:
           which qmake
           qmake -query
 
-      - name: Install OpenMP
-        run: brew install libomp
+#      - name: Install OpenMP
+#        run: brew install libomp
 
       - name: Install Boost
         run: brew install boost
@@ -60,20 +60,20 @@ jobs:
 
 
 
-      - name: Bundle Boost libraries
-        run: |
-          APP=build/VieSchedppGUI.app
-          mkdir -p $APP/Contents/Frameworks
-
-          BOOST_LIB=$(brew --prefix boost)/lib
-
-          cp $BOOST_LIB/libboost*.dylib $APP/Contents/Frameworks/ || true
-
-#      - name: Fix rpath
+#      - name: Bundle Boost libraries
 #        run: |
-#          BINARY=build/VieSchedppGUI.app/Contents/MacOS/VieSchedppGUI
-#          install_name_tool -add_rpath "@executable_path/../Frameworks" "$BINARY" || true
-#
+#          APP=build/VieSchedppGUI.app
+#          mkdir -p $APP/Contents/Frameworks
+
+#          BOOST_LIB=$(brew --prefix boost)/lib
+
+#          cp $BOOST_LIB/libboost*.dylib $APP/Contents/Frameworks/ || true
+
+      - name: Fix rpath
+        run: |
+          BINARY=build/VieSchedppGUI.app/Contents/MacOS/VieSchedppGUI
+          install_name_tool -add_rpath "@executable_path/../Frameworks" "$BINARY" || true
+
       - name: Debug app bundle
         run: |
           ls -R build
