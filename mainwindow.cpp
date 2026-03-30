@@ -6023,7 +6023,8 @@ void MainWindow::on_pushButton_outputSnrTable_2_clicked()
             QMessageBox mb;
             QMessageBox::StandardButton reply = mb.information(this, "Operation notes output", message, QMessageBox::Open,QMessageBox::Ok);
             if(reply == QMessageBox::Open){
-                QDesktopServices::openUrl(path);
+                //QDesktopServices::openUrl(path);
+                QProcess::startDetached("open", QStringList() << path);
             }
         }
 
@@ -6059,7 +6060,8 @@ void MainWindow::on_pushButton_outputSnrTable_clicked()
             QMessageBox mb;
             QMessageBox::StandardButton reply = mb.information(this, "SNR table output", message, QMessageBox::Open,QMessageBox::Ok);
             if(reply == QMessageBox::Open){
-                QDesktopServices::openUrl(path);
+                //QDesktopServices::openUrl(path);
+                QProcess::startDetached("open", QStringList() << path);
             }
         }
 
@@ -7064,6 +7066,7 @@ void MainWindow::on_pushButton_vgos_mode_clicked()
 void MainWindow::on_pushButton_4_clicked()
 {
     QString path = QDir("./AUTO_DOWNLOAD_CATALOGS/").absolutePath();
-    QDesktopServices::openUrl(QUrl::fromLocalFile(path));
+   // QDesktopServices::openUrl(QUrl::fromLocalFile(path));
+    QProcess::startDetached("open", QStringList() << path);
 }
 
