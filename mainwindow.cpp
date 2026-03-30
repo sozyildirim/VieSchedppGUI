@@ -5986,7 +5986,8 @@ void MainWindow::on_pushButton_outputNgsFild_clicked()
             QMessageBox mb;
             QMessageBox::StandardButton reply = mb.information(this, "NGS output", message, QMessageBox::Open,QMessageBox::Ok);
             if(reply == QMessageBox::Open){
-                QDesktopServices::openUrl(path);
+                //QDesktopServices::openUrl(path);
+                QProcess::startDetached("open", QStringList() << path);
             }
         }
 
