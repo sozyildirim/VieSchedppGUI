@@ -667,7 +667,10 @@ void VieSchedpp_Analyser::on_pushButton_skyCov_screenshot_clicked()
         QMessageBox mb;
         QMessageBox::StandardButton reply = mb.information(this,"rendering",QString("plots successfully saved at\n").append(outDir),QMessageBox::Open,QMessageBox::Ok);
         if(reply == QMessageBox::Open){
-            QDesktopServices::openUrl(QUrl(mydir.absolutePath()));
+            // QDesktopServices::openUrl(QUrl(mydir.absolutePath()));
+            qDebug() << "6 Path:" << mydir.absolutePath();
+            qDebug() << "Exists:" << QDir(mydir.absolutePath()).exists();
+            QProcess::startDetached("open", QStringList() << mydir.absolutePath());  
         }
 
 
@@ -777,7 +780,10 @@ void VieSchedpp_Analyser::on_pushButton_uv_screenshot_clicked()
         QMessageBox mb;
         QMessageBox::StandardButton reply = mb.information(this,"rendering",QString("plots successfully saved at\n").append(outDir),QMessageBox::Open,QMessageBox::Ok);
         if(reply == QMessageBox::Open){
-            QDesktopServices::openUrl(QUrl(mydir.absolutePath()));
+            // QDesktopServices::openUrl(QUrl(mydir.absolutePath()));
+            qDebug() << "7 Path:" << mydir.absolutePath();
+            qDebug() << "Exists:" << QDir(mydir.absolutePath()).exists();
+            QProcess::startDetached("open", QStringList() << mydir.absolutePath());
         }
 
     }
@@ -884,7 +890,10 @@ void VieSchedpp_Analyser::on_pushButton_el_screenshot_clicked()
         QMessageBox mb;
         QMessageBox::StandardButton reply = mb.information(this,"rendering",QString("plots successfully saved at\n").append(outDir),QMessageBox::Open,QMessageBox::Ok);
         if(reply == QMessageBox::Open){
-            QDesktopServices::openUrl(QUrl(mydir.absolutePath()));
+            // QDesktopServices::openUrl(QUrl(mydir.absolutePath()));
+            qDebug() << "8 Path:" << mydir.absolutePath();
+            qDebug() << "Exists:" << QDir(mydir.absolutePath()).exists();
+            QProcess::startDetached("open", QStringList() << mydir.absolutePath());      
         }
 
     }
