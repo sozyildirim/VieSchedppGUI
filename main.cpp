@@ -283,6 +283,8 @@ int main(int argc, char *argv[])
     int result = 0;
 
     do{
+        QApplication::setAttribute(Qt::AA_DontUseNativeDialogs);
+        
         QApplication app(argc, argv);
         QApplication::setStyle(new UnifiedCheckStyle("Fusion"));
         setAlwaysLightPalette(app);
