@@ -5987,9 +5987,9 @@ void MainWindow::on_pushButton_outputNgsFild_clicked()
             QMessageBox::StandardButton reply = mb.information(this, "NGS output", message, QMessageBox::Open,QMessageBox::Ok);
             if(reply == QMessageBox::Open){
                 //QDesktopServices::openUrl(path);
+                qDebug() << "2 Path:" << path;
+                qDebug() << "Exists:" << QFileInfo::exists(path);
                 QProcess::startDetached("open", QStringList() << path);
-                qDebug() << "Path:" << path;
-                qDebug() << "1";
             }
         }
 
@@ -6025,10 +6025,10 @@ void MainWindow::on_pushButton_outputSnrTable_2_clicked()
             QMessageBox mb;
             QMessageBox::StandardButton reply = mb.information(this, "Operation notes output", message, QMessageBox::Open,QMessageBox::Ok);
             if(reply == QMessageBox::Open){
+                qDebug() << "3 Path:" << path;
+                qDebug() << "Exists:" << QFileInfo::exists(path);
                 //QDesktopServices::openUrl(path);
                 QProcess::startDetached("open", QStringList() << path);
-                qDebug() << "Path:" << path;
-                qDebug() << "1";
             }
         }
 
@@ -6065,9 +6065,9 @@ void MainWindow::on_pushButton_outputSnrTable_clicked()
             QMessageBox::StandardButton reply = mb.information(this, "SNR table output", message, QMessageBox::Open,QMessageBox::Ok);
             if(reply == QMessageBox::Open){
                 //QDesktopServices::openUrl(path);
+                qDebug() << "4 Path:" << path;
+                qDebug() << "Exists:" << QFileInfo::exists(path);
                 QProcess::startDetached("open", QStringList() << path);
-                qDebug() << "Path:" << path;
-                qDebug() << "1";
             }
         }
 
@@ -7073,8 +7073,8 @@ void MainWindow::on_pushButton_4_clicked()
 {
     QString path = QDir("./AUTO_DOWNLOAD_CATALOGS/").absolutePath();
    // QDesktopServices::openUrl(QUrl::fromLocalFile(path));
+    qDebug() << "5 Path:" << path;
+    qDebug() << "Exists:" << QFileInfo::exists(path);
     QProcess::startDetached("open", QStringList() << path);
-    qDebug() << "Path:" << path;
-    qDebug() << "1";
 }
 
