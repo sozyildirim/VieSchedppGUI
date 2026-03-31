@@ -619,8 +619,8 @@ QString MainWindow::writeXML()
     QMessageBox::StandardButton reply = mb.information(this,"parameter file created",QString("A new parameter file was created and saved at: \n").append(path),QMessageBox::Open,QMessageBox::Ok);
     if(reply == QMessageBox::Open){
         //QDesktopServices::openUrl(QUrl(mydir.absolutePath()));
-        qDebug() << "1. Path:" << path;
-        qDebug() << "Exists:" << QFileInfo::exists(path);
+        //qDebug() << "1. Path:" << path;
+        //qDebug() << "Exists:" << QFileInfo::exists(path);
         QProcess::startDetached("open", QStringList() << mydir.absolutePath());
     }
     return path;
