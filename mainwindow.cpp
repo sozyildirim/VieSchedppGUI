@@ -5988,6 +5988,8 @@ void MainWindow::on_pushButton_outputNgsFild_clicked()
             if(reply == QMessageBox::Open){
                 //QDesktopServices::openUrl(path);
                 QProcess::startDetached("open", QStringList() << path);
+                qDebug() << "Path:" << path;
+                qDebug() << "1";
             }
         }
 
@@ -6025,6 +6027,8 @@ void MainWindow::on_pushButton_outputSnrTable_2_clicked()
             if(reply == QMessageBox::Open){
                 //QDesktopServices::openUrl(path);
                 QProcess::startDetached("open", QStringList() << path);
+                qDebug() << "Path:" << path;
+                qDebug() << "1";
             }
         }
 
@@ -6062,6 +6066,8 @@ void MainWindow::on_pushButton_outputSnrTable_clicked()
             if(reply == QMessageBox::Open){
                 //QDesktopServices::openUrl(path);
                 QProcess::startDetached("open", QStringList() << path);
+                qDebug() << "Path:" << path;
+                qDebug() << "1";
             }
         }
 
@@ -7068,5 +7074,7 @@ void MainWindow::on_pushButton_4_clicked()
     QString path = QDir("./AUTO_DOWNLOAD_CATALOGS/").absolutePath();
    // QDesktopServices::openUrl(QUrl::fromLocalFile(path));
     QProcess::startDetached("open", QStringList() << path);
+    qDebug() << "Path:" << path;
+    qDebug() << "1";
 }
 
